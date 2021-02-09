@@ -65,6 +65,7 @@ def run():
     data = {
         "year": "",
         "author": args.author,
+        "holder": args.author,
         "package_name": args.name,
         "username": args.username,
         "email": args.email,
