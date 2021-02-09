@@ -34,7 +34,7 @@ parser = argparse.ArgumentParser(
     prog=PROG,
     description="Start a new python project",
 )
-parser.add_argument("name", help="package name")
+parser.add_argument("-n", "--name", help="package name")
 parser.add_argument("-u", "--username", help="pypi username", default=None)
 parser.add_argument("-a", "--author", help="package author", default=None)
 parser.add_argument("-e", "--email", help="author email", default=None)
@@ -55,6 +55,7 @@ def input_if_null(value, term):
 
 def run():
     args = parser.parse_args()
+    args.name = input_if_null(args.name, "Package name")
     if not args.name.isidentifier():
         raise Error("name {} is not a valid package name".format(args.name))
     args.desc = input_if_null(args.desc, "Package description")
